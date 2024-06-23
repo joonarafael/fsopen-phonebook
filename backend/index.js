@@ -1,11 +1,17 @@
 const express = require("express");
 const PERSONS = require("./db.json");
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
+app.use(
+	morgan(":method :url :status :res[content-length] - :response-time ms")
+);
 
 app.get("/api/persons", (request, response) => {
 	response.json(PERSONS);
@@ -73,9 +79,9 @@ app.delete("/api/persons/:id", (request, response) => {
 
 		fs.writeFileSync("./db.json", JSON.stringify(PERSONS, null, 2));
 
-		response.status(204).end().json({ success: "Record deleted!" });
+		response.status(204).json({ success: "Record deleted!" });
 	} else {
-		response.status(404).end().json({ error: "No record with matching ID." });
+		response.status(404).json({ error: "No record with matching ID." });
 	}
 });
 
@@ -88,7 +94,7 @@ app.get("/info", (request, response) => {
 	`);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
