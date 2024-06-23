@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js",
-		"build:ui": "cd ./frontend_src && yarn && yarn build && cp -r build ../build",
+		"build:ui": "rm -rf build && cd ./frontend_src && rm -rf build && yarn && yarn build && cp -r build ../build",
 		"test": "\"echo \\\"Error: no test specified\" && exit 1\"",
 		"deploy": "yarn && yarn start"
 	},
