@@ -1,0 +1,17 @@
+{
+	"name": "fsopen-phonebook",
+	"version": "1.0.0",
+	"description": "Phonebook Project for Full Stack open",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js",
+		"test": "\"echo \\\"Error: no test specified\" && exit 1\""
+	},
+	"author": "joonarafael",
+	"dependencies": {
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.4"
+	}
+}
