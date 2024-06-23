@@ -5,6 +5,7 @@
 	"scripts": {
 		"start": "node index.js",
 		"dev": "nodemon index.js",
+		"build:ui": "cd ./frontend_src && yarn build && cp -r build ../build",
 		"test": "\"echo \\\"Error: no test specified\" && exit 1\""
 	},
 	"author": "joonarafael",

@@ -3,6 +3,7 @@ const PERSONS = require("./db.json");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const fs = require("fs");
+const path = require("path");
 const cors = require("cors");
 
 const app = express();
@@ -93,6 +94,8 @@ app.get("/info", (request, response) => {
 		</div>
 	`);
 });
+
+app.use(express.static(path.join(__dirname, "build")));
 
 const PORT = process.env.PORT || 3001;
 
