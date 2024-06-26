@@ -1,5 +1,4 @@
 const express = require("express");
-const PERSONS = require("./db.json");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const fs = require("fs");
@@ -21,9 +20,6 @@ app.get("/api/persons", (request, response) => {
 app.get("/api/persons/:id", (request, response) => {
 	const id = Number(request.params.id);
 	const person = PERSONS["persons"].find((person) => person.id === id);
-
-	console.log(PERSONS["persons"]);
-	console.log(person);
 
 	if (person) {
 		response.send(`
