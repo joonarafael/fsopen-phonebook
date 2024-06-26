@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3001/api/persons";
+const BASE_URL = "https://fsopen-phonebook-hdvt.onrender.com/api/persons";
 
 const getAll = () => {
 	const request = axios.get(BASE_URL);
