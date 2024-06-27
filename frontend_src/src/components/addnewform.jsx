@@ -46,12 +46,17 @@ const AddNewForm = (props) => {
 						});
 					})
 					.catch((err) => {
-						console.log(err);
-
-						props.setNotification({
-							status: "error",
-							message: `DB operation failed.`,
-						});
+						if (err.response.data.error) {
+							props.setNotification({
+								status: "error",
+								message: err.response.data.error,
+							});
+						} else {
+							props.setNotification({
+								status: "error",
+								message: `DB operation failed.`,
+							});
+						}
 					});
 
 				return;
@@ -74,12 +79,17 @@ const AddNewForm = (props) => {
 				});
 			})
 			.catch((err) => {
-				console.log(err);
-
-				props.setNotification({
-					status: "error",
-					message: `DB operation failed.`,
-				});
+				if (err.response.data.error) {
+					props.setNotification({
+						status: "error",
+						message: err.response.data.error,
+					});
+				} else {
+					props.setNotification({
+						status: "error",
+						message: `DB operation failed.`,
+					});
+				}
 			});
 	};
 
